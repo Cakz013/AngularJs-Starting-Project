@@ -1,0 +1,52 @@
+<html lang="en" ng-app="crudApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gestion de Perfiles</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+
+</head>
+
+<body ng-controller="PerfilCtrl">
+    <div class="contrainer">
+        <!-- Cabecera -->
+        <div class="jumbotron text-center">
+            <h1>
+                Listado de Perfiles <span class="label label-info">{{
+                    listaPerfiles.length}}
+	</span>
+            </h1>
+        </div>
+
+        <!-- Lista de Perfiles -->
+        <div id="perfil-list" class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div class="checkbox" ng-repeat="x in listaPerfiles">
+                    <label> <input type="checkbox"
+	ng-click="eliminarPerfil(x.codigo)">{{x.codigo}} - {{x.descripcion}} <input type="button" value="Modificar"
+	ng-click="AsignarValores(x)"></label>
+                </div>
+            </div>
+        </div>
+        <!-- Formulario para insertar nuevos Perfiles -->
+        <div id="todo-form" class="row">
+            <div class="col-sm-8 col-sm-offset-2 text-center">
+                <form>
+                    <div class="form-group">
+                        <input type="text" class="form-control - input-lg text-center" placeholder="Inserta el codigo del Perfil" ng-model="perfil.codigo">
+                        <input type="text" class="form-control - input-lg text-center" placeholder="Inserta la descripcion del Perfil" ng-model="perfil.descripcion">
+                    </div>
+                    <button class="btn btn-primary btn-lg " ng-click="guardarPerfil() ">Añadir</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js "></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="scripts/App.js"></script>
+    <script src="scripts/services/PerfilService.js"></script>
+    <script src="scripts/controllers/PerfilController.js"></script>
+</body>
+
+</html>
